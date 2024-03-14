@@ -6,6 +6,12 @@
   --accent-font: "STIX Two Text";
 }
 
+.theme_dark {
+  --bg-color: #171717;
+  --text-color: #B3B3B3;
+  --accent-color: transparent;
+}
+
 *,
 *::before,
 *::after {
@@ -20,10 +26,6 @@
   background-color: var(--bg-color, #f5f5f5);
 }
 
-.header {
-  padding-block-start: 10%;
-}
-
 p,
 h1,
 h2,
@@ -36,15 +38,93 @@ figure {
   margin: 0;
 }
 
+a:focus,
+button:focus {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+.content-section {
+  padding: 0 5vi;
+}
+
+.header {
+  padding-block-start: 10%;
+}
+
+.header__logo {
+  width: 135px;
+  height: 31px;
+}
+
+.header__menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-block-start: 1px solid currentColor;
+  border-block-end: 1px solid currentColor;
+  padding-block: 20px;
+}
+
+.header__theme-toggler {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 6px 0;
+  gap: 20px;
+}
+
+.header__theme-button {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.04;
+  color: currentColor;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.header__theme-button:hover {
+  text-decoration: underline;
+}
+
+.header__theme-button_type_dark {
+}
+
+.header__theme-button_type_light {
+}
+
+.header__theme-button_is-active {
+  font-weight: 700;
+  position: relative;
+}
+
+.header__theme-button_is-active::after {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color, #ffab6b);
+  inline-size: calc(100% + 6px);
+  inset-inline-start: -3px;
+  z-index: -1;
+  block-size: 0.5ch;
+  inset-block-end: 0.3ch;
+}
+
 .heading {
   font-family: var(--accent-font, serif);
   text-align: center;
   font-weight: 600;
   line-height: 0.9;
-}
-
-.content-section {
-  padding: 0 5vi;
 }
 
 .header__title {
@@ -127,7 +207,7 @@ figure {
 .content__picture-caption {
   text-align: center;
   border-block-end: 1px solid currentColor;
-  padding: 20px 0;
+  padding-block: 20px;
   font-size: 18px;
 }
 
@@ -155,7 +235,7 @@ figure {
 }
 
 .colored-text::after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: var(--accent-color, #ffab6b);
   inline-size: calc(100% + 8px);
@@ -163,4 +243,24 @@ figure {
   z-index: -1;
   block-size: 0.5ch;
   inset-block-end: 0.3ch;
+}
+
+.footer {
+  margin-block-start: 10%;
+  border-block-start: 1px solid currentColor;
+  padding: 2.5%;
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: 18px;
+}
+
+.theme_dark .content__text-block_type_first-lettered
+  .content__paragraph:first-of-type::first-letter {
+  border: 1px solid currentColor;
+}
+
+.theme_dark .content__list li::before {
+  background-image: url(../images/marker-dark.svg);
 }
