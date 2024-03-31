@@ -98,12 +98,6 @@ button:disabled {
   text-decoration: underline;
 }
 
-.header__theme-button_type_dark {
-}
-
-.header__theme-button_type_light {
-}
-
 .header__theme-button_is-active {
   font-weight: 700;
   position: relative;
